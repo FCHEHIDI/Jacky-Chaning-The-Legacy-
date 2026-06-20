@@ -1,0 +1,99 @@
+<article>
+
+  <p>
+    There's a point in every legacy project where you realize the real problem
+    isn't the code — it's the absence of discipline around how you touch it.
+    I hit that point staring at 367 lines of Flask with SQL injection, MD5
+    passwords, a global DB connection, and an admin route with literally zero auth.
+    The comment at line 2 said it all:
+    <em>"do not touch without approval from Jean-Michel."</em>
+    Jean-Michel had left the building.
+  </p>
+
+  <h2>The situation: a REPL without a runtime</h2>
+
+  <p>
+    My first instinct was to open Claude Code and start prompting.
+    That's the trap. A REPL without a runtime is just a chat with extra steps.
+    No memory across sessions. No gate to stop you from skipping phases.
+    No audit trail. You end up with hallucinated progress —
+    the illusion of refactoring without the discipline of it.
+  </p>
+
+  <p>
+    I needed something that would force the work to stay honest.
+  </p>
+
+  <h2>The task: build the discipline layer first</h2>
+
+  <p>
+    Before touching a single line of the legacy code, I built the orchestration system:
+  </p>
+
+  <ul>
+    <li>A <strong>SQLite state machine</strong> — 7 tables tracking phases, smells, decisions, metrics, session continuity.</li>
+    <li><strong>9 slash commands</strong> — <code>/survey</code>, <code>/map</code>, <code>/audit</code>, <code>/draft</code>, <code>/stabilize</code>, <code>/derive</code>, <code>/extend</code>, <code>/compact</code>, <code>/doctor</code>.</li>
+    <li><strong>Phase gates</strong> — <code>check_gate.py</code> validates exit criteria before any phase transition. No gate, no move.</li>
+    <li><strong>Context injection</strong> — <code>session/context.yaml</code> auto-generated from SQLite, ~422 tokens. Claude reads state, not conversation history.</li>
+    <li><strong>Feedback loops</strong> — a metrics dashboard with sparklines, regression detection, inter-session trend tracking.</li>
+  </ul>
+
+  <p>
+    The rule was simple: <em>never modify <code>src/</code> before <code>/stabilize</code> completes with all tests green.</em>
+  </p>
+
+  <h2>The action: make the system visible</h2>
+
+  <p>
+    Running <code>make verify</code> before every session — 33 checks, 0 failures —
+    changed how I felt about opening the project.
+    Not anxious. Ready.
+  </p>
+
+  <p>
+    Running <code>make smells</code> and seeing the 5 critical smells unchanged
+    was a reminder that the legacy wasn't going away on its own.
+    The system kept score so I didn't have to carry it mentally.
+  </p>
+
+  <p>
+    The first real run of <code>/survey</code> through Claude Code catalogued all 5 smells
+    into the DB, wrote <code>logs/audit/survey.md</code>, validated the gate.
+    Then <code>make dump</code> committed the state to git — human-readable SQL,
+    not a binary blob.
+  </p>
+
+  <h2>The result: discipline as infrastructure</h2>
+
+  <p>
+    The refactor hasn't started yet. That's the point.
+    What exists now is the infrastructure that makes the refactor trustworthy:
+    a pre-flight check, a state machine, phase gates, a feedback loop,
+    and a context injection system that survives session boundaries without
+    burning tokens on conversation history.
+  </p>
+
+  <p>
+    When <code>/derive</code> runs, it will have coverage metrics to defend against.
+    When <code>/stabilize</code> runs, it will need green tests before the gate opens.
+    Jean-Michel's code will be touched — but under controlled conditions.
+  </p>
+
+  <h2>The lesson: I evolve therefore I am</h2>
+
+  <p>
+    I used to think the hardest part of legacy refactoring was the code.
+    It's not. It's the cognitive load of not knowing what you've already touched,
+    what broke, and what was intentional.
+  </p>
+
+  <p>
+    Building the runtime first isn't overhead — it's the work.
+    The code will follow. The discipline had to come first.
+  </p>
+
+  <p>
+    Next: <code>/survey</code> → <code>/map</code> → <code>/audit</code> → the plan becomes a contract.
+  </p>
+
+</article>

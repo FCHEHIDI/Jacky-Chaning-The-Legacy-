@@ -1,0 +1,130 @@
+===============================================================
+  VIDEO CAPTIONS — "I built an AI orchestration system"
+  Format: [SEGMENT] timecode | TEXT | duration
+===============================================================
+
+
+── SEGMENT 1 — Hook (0:00 → 0:20) ──────────────────────────
+
+TEXT A (appear at 0:02, hold 4s):
+"Most people use Claude by typing in a chat window."
+
+TEXT B (appear at 0:07, hold 5s):
+"I built a runtime around it."
+
+TEXT C (appear at 0:13, hold 6s):
+"Here's what that looks like."
+
+
+── SEGMENT 2 — The Problem (0:20 → 0:50) ───────────────────
+
+TEXT A (appear at 0:22, hold 6s):
+"367 lines of legacy Flask code."
+
+TEXT B (appear at 0:29, hold 7s):
+"SQL injection. MD5 passwords.
+Admin routes with zero auth."
+
+TEXT C (appear at 0:40, hold 8s):
+"This is what I'm refactoring —
+without breaking anything."
+
+
+── SEGMENT 3 — Pre-flight (0:50 → 1:20) ────────────────────
+
+TEXT A (appear at 0:52, hold 5s):
+"Before touching a single line —"
+
+TEXT B (appear at 0:58, hold 8s):
+"A pre-flight check.
+33 automated verifications."
+
+TEXT C (appear at 1:08, hold 10s):
+"9 slash commands verified.
+State DB ready.
+0 failures."
+
+
+── SEGMENT 4 — The Survey (1:20 → 2:00) ────────────────────
+
+TEXT A (appear at 1:22, hold 6s):
+"Claude reads the entire legacy codebase."
+
+TEXT B (appear at 1:30, hold 8s):
+"Every smell gets catalogued
+into a SQLite state database."
+
+TEXT C (appear at 1:42, hold 12s):
+"Not in a chat.
+In a structured state machine
+with 7 tables and typed fields."
+
+
+── SEGMENT 5 — The Gate (2:00 → 2:30) ──────────────────────
+
+TEXT A (appear at 2:02, hold 6s):
+"Each phase has an exit gate."
+
+TEXT B (appear at 2:10, hold 8s):
+"Claude cannot move forward
+until every criterion is met."
+
+TEXT C (appear at 2:20, hold 8s):
+"No hallucinated progress.
+No skipped steps."
+
+
+── SEGMENT 6 — Dashboard (2:30 → 3:00) ─────────────────────
+
+TEXT A (appear at 2:32, hold 7s):
+"Every session updates a dashboard."
+
+TEXT B (appear at 2:41, hold 9s):
+"Coverage trends. Test counts.
+Smell fix rate. Decision velocity."
+
+TEXT C (appear at 2:52, hold 7s):
+"Inter-session memory —
+without burning context tokens."
+
+
+── SEGMENT 7 — Git State (3:00 → 3:20) ─────────────────────
+
+TEXT A (appear at 3:02, hold 6s):
+"State is committed to git."
+
+TEXT B (appear at 3:10, hold 8s):
+"Human-readable SQL dump.
+Every decision. Every smell. Every metric.
+No black box."
+
+
+── SEGMENT 8 — End Card (3:20 → 3:30) ──────────────────────
+
+TEXT A (appear at 3:21, hold 8s):
+"7 phases · 9 slash commands
+SQLite state · Gate validation · Context budget
+
+Built with Claude Code."
+
+TEXT B (appear at 3:27, hold 3s):
+"↓ Repo in the comments"
+
+
+===============================================================
+  CAPCUT SETTINGS
+===============================================================
+
+Font:         Inter Bold  (ou Montserrat Bold)
+Text color:   #FFFFFF (blanc)
+Background:   rounded pill semi-transparent noir (#000 @ 60% opacity)
+Animation in: Fade (0.3s)
+Animation out: Fade (0.2s)
+
+Music:        YouTube Audio Library → search "lo-fi focus"
+              Suggestion: "Chill" by Muciojad (no copyright)
+Music volume: 20-25% (texte doit dominer)
+
+Export:       1080p / 30fps / MP4
+Aspect ratio: 16:9 (YouTube/LinkedIn) ou 9:16 pour Reels/TikTok
+===============================================================
