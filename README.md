@@ -1,6 +1,6 @@
-# Jacky — Changing The Legacy
+# Jacky Chaning The Legacy
 
-> A Claude Code orchestration system for refactoring a legacy Flask monolith.  
+> **Chaning** = *chaining* Claude's reasoning steps through a legacy Flask monolith — Jackie Chan style.  
 > Not a vibe-coding experiment — a disciplined, state-driven workflow.
 
 [![GitHub Pages](https://img.shields.io/badge/docs-GitHub%20Pages-orange)](https://fchehidi.github.io/Jacky-Chaning-The-Legacy-/)
