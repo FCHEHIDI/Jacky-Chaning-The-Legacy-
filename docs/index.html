@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jacky — Changing The Legacy</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Styrene+A:wght@400;500;600&display=swap');
+
+    :root {
+      --bg:        #1a1310;
+      --surface:   #231e1a;
+      --surface2:  #2d2621;
+      --border:    #3d342c;
+      --text:      #ede8e3;
+      --muted:     #9c8e83;
+      --orange:    #da7756;
+      --orange-lt: #f0a282;
+      --orange-dk: #b85a38;
+      --cream:     #f5ede6;
+      --green:     #7eb88a;
+      --yellow:    #d4a843;
+      --red:       #c0604a;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Styrene A', 'Segoe UI', system-ui, sans-serif;
+      line-height: 1.65;
+      padding: 2.5rem 1rem;
+    }
+    .container { max-width: 960px; margin: 0 auto; }
+
+    /* ── Header ── */
+    header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 2rem;
+      margin-bottom: 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .logo-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.25rem;
+    }
+    .logo-mark {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: var(--orange);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    header h1 {
+      font-size: 1.9rem;
+      font-weight: 600;
+      color: var(--cream);
+      letter-spacing: -0.02em;
+    }
+    header p { color: var(--muted); font-size: 0.95rem; }
+
+    .badge-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.75rem; }
+    .badge {
+      font-size: 0.72rem;
+      padding: 0.2rem 0.65rem;
+      border-radius: 9999px;
+      font-weight: 500;
+      border: 1px solid;
+      letter-spacing: 0.02em;
+    }
+    .badge-orange { border-color: var(--orange); color: var(--orange-lt); }
+    .badge-green  { border-color: var(--green);  color: var(--green); }
+    .badge-muted  { border-color: var(--border); color: var(--muted); }
+
+    /* ── Sections ── */
+    section { margin-bottom: 3rem; }
+    section h2 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--orange-lt);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      letter-spacing: -0.01em;
+    }
+    section h2::before {
+      content: '';
+      display: inline-block;
+      width: 3px; height: 1.1rem;
+      background: var(--orange);
+      border-radius: 2px;
+    }
+
+    /* ── Code blocks ── */
+    pre {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      overflow-x: auto;
+      font-family: 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+      font-size: 0.8rem;
+      line-height: 1.7;
+      white-space: pre;
+      color: var(--text);
+    }
+
+    /* ── Grid / Cards ── */
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    @media (max-width: 700px) { .grid { grid-template-columns: 1fr; } }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+    }
+    .card h3 {
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-bottom: 0.8rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* ── Phases ── */
+    .phase-list { display: flex; flex-direction: column; gap: 0.35rem; }
+    .phase {
+      display: flex; align-items: center; gap: 0.6rem;
+      font-size: 0.85rem;
+      padding: 0.3rem 0.5rem;
+      border-radius: 6px;
+    }
+    .phase-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+    .not_started { background: var(--muted); opacity: 0.35; }
+    .in_progress  { background: var(--orange); }
+    .completed    { background: var(--green); }
+
+    /* ── Smells ── */
+    .smell-list { display: flex; flex-direction: column; gap: 0.4rem; }
+    .smell {
+      font-size: 0.81rem;
+      padding: 0.4rem 0.75rem;
+      border-radius: 6px;
+      border-left: 3px solid var(--red);
+      background: rgba(192, 96, 74, 0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .smell-loc { color: var(--muted); font-size: 0.73rem; white-space: nowrap; }
+
+    /* ── Metric rows ── */
+    .metric-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.4rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.83rem;
+    }
+    .metric-row:last-child { border-bottom: none; }
+    .metric-val { color: var(--muted); font-family: monospace; font-size: 0.8rem; }
+
+    /* ── Budget bar ── */
+    .budget-bar-wrap { margin-top: 0.5rem; }
+    .budget-bar-track {
+      background: var(--border);
+      border-radius: 4px;
+      height: 8px;
+      overflow: hidden;
+    }
+    .budget-bar-fill {
+      height: 100%;
+      border-radius: 4px;
+      background: linear-gradient(90deg, var(--orange-dk), var(--orange), var(--orange-lt));
+    }
+    .budget-label { font-size: 0.73rem; color: var(--muted); margin-top: 0.35rem; }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding-top: 1.5rem;
+      color: var(--muted);
+      font-size: 0.78rem;
+      text-align: center;
+    }
+    footer a { color: var(--orange-lt); text-decoration: none; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="logo-row">
+      <div class="logo-mark">⬡</div>
+      <h1>Jacky — Changing The Legacy</h1>
+    </div>
+    <p>Workflow expert de refactoring d'un monolithe Flask legacy piloté par Claude Code REPL</p>
+    <div class="badge-row">
+      <span class="badge badge-green">Python 3.11.9</span>
+      <span class="badge badge-green">Flask 3.x</span>
+      <span class="badge badge-muted">SQLAlchemy ORM</span>
+      <span class="badge badge-muted">pytest + coverage</span>
+      <span class="badge badge-orange">Phase 1 — Survey</span>
+    </div>
+  </header>
+
+  <!-- RUNTIME CHECK -->
+  <section>
+    <h2>make verify — Pre-flight check</h2>
+    <pre>── 1. Python runtime
+  ✅ Python 3.11.9
+
+── 2. Required packages
+  ✅ Flask        ✅ pytest       ✅ mypy
+  ✅ ruff         ✅ pydantic     ✅ bcrypt
+  ✅ structlog    ✅ SQLAlchemy
+
+── 3. State DB (session/state.db)
+  ✅ state.db readable — 7 phases, 7 tables
+
+── 4. session/context.yaml
+  ✅ context.yaml present (~422 tokens)
+  🟡 compact validation: recommended fields missing (non-blocking)
+
+── 5. src/app.py
+  ✅ src/app.py syntax OK (367 lines)
+
+── 6. Slash commands (.claude/commands/)
+  ✅ /survey (2466 bytes)   ✅ /map (1127 bytes)    ✅ /audit (1500 bytes)
+  ✅ /draft (1182 bytes)    ✅ /stabilize (4054 bytes) ✅ /derive (3543 bytes)
+  ✅ /extend (1474 bytes)   ✅ /compact (3575 bytes) ✅ /doctor (1517 bytes)
+
+── 7. CLAUDE.md sections
+  ✅ État courant  ✅ Règles absolues
+  ✅ Contexte d'injection  ✅ Architecture cible
+
+── 8. scripts/ syntax check
+  ✅ init_state.py  ✅ state.py  ✅ check_gate.py
+  ✅ context_budget.py  ✅ metrics_dashboard.py
+  ✅ validate_compact.py  ✅ verify_env.py
+
+── 9. requirements.txt
+  ✅ requirements.txt present (10 packages)
+
+═══════════════════════════════════════════════
+  ✅ 33/34 checks passed  🟡 1 warning  🔴 0 failures
+  🟡 MOSTLY READY — safe to proceed</pre>
+  </section>
+
+  <!-- GRID STATUS + SMELLS -->
+  <div class="grid">
+    <div class="card">
+      <h3>make status — Phases</h3>
+      <div class="phase-list">
+        <div class="phase"><span class="phase-dot not_started"></span>survey</div>
+        <div class="phase"><span class="phase-dot not_started"></span>map</div>
+        <div class="phase"><span class="phase-dot not_started"></span>audit</div>
+        <div class="phase"><span class="phase-dot not_started"></span>draft</div>
+        <div class="phase"><span class="phase-dot not_started"></span>stabilize</div>
+        <div class="phase"><span class="phase-dot not_started"></span>derive</div>
+        <div class="phase"><span class="phase-dot not_started"></span>extend</div>
+      </div>
+      <div style="margin-top:1rem; font-size:0.8rem; color:var(--muted)">
+        Phase: none &nbsp;|&nbsp; Smells open/fixed: 5/0 &nbsp;|&nbsp; Decisions: 0
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>make smells — Smells critiques</h3>
+      <div class="smell-list">
+        <div class="smell">
+          <span>🔴 SQL injection</span>
+          <span class="smell-loc">get_tasks query builder</span>
+        </div>
+        <div class="smell">
+          <span>🔴 MD5 password</span>
+          <span class="smell-loc">register route</span>
+        </div>
+        <div class="smell">
+          <span>🔴 Global DB connection</span>
+          <span class="smell-loc">module level conn</span>
+        </div>
+        <div class="smell">
+          <span>🔴 Hardcoded secret key</span>
+          <span class="smell-loc">app.secret_key</span>
+        </div>
+        <div class="smell">
+          <span>🔴 Admin routes no auth</span>
+          <span class="smell-loc">/admin/users /admin/reset</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DASHBOARD -->
+  <section style="margin-top:1.5rem">
+    <h2>make dashboard — Métriques inter-sessions</h2>
+    <pre>╔══════════════════════════════════════════════════════════════════╗
+║  PROJECT JACKY — Metrics Dashboard (inter-session feedback)     ║
+╚══════════════════════════════════════════════════════════════════╝
+  Generated: 2026-06-20
+
+  Phases: ⬜survey  ⬜map  ⬜audit  ⬜draft  ⬜stabilize  ⬜derive  ⬜extend
+
+  Smells    [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░] 0%   0/5 fixed
+
+  METRIC                 TREND (oldest → latest)     LAST   HEALTH
+  ────────────────────────────────────────────────────────────────
+  Coverage %             ────────────────────          —   ⬜ no data
+  Tests passing          ────────────────────          —   ⬜ no data
+  mypy errors            ────────────────────          —   ⬜ no data
+  Modules migrated       ────────────────────          —   ⬜ no data
+
+  Decisions total: 0  |  Sessions: 1  |  Velocity: 0.0/session
+
+  ⬜ No metric data yet — run /stabilize and /derive to populate</pre>
+  </section>
+
+  <!-- BUDGET -->
+  <section>
+    <h2>make budget — Context token budget</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Fichiers injectables</h3>
+        <div class="metric-row"><span>src/app.py</span><span class="metric-val">3,224 tok ⚠️</span></div>
+        <div class="metric-row"><span>CLAUDE.md</span><span class="metric-val">830 tok 🟡</span></div>
+        <div class="metric-row"><span>prompts/conventions.md</span><span class="metric-val">557 tok 🟡</span></div>
+        <div class="metric-row"><span>prompts/coding_standards.md</span><span class="metric-val">526 tok 🟡</span></div>
+        <div class="metric-row"><span>session/context.yaml</span><span class="metric-val">445 tok ✅</span></div>
+        <div class="metric-row"><span>prompts/system.md</span><span class="metric-val">428 tok ✅</span></div>
+        <div class="metric-row"><span>prompts/data_contract.md</span><span class="metric-val">283 tok ✅</span></div>
+      </div>
+      <div class="card">
+        <h3>Budget global</h3>
+        <div class="budget-bar-wrap">
+          <div class="budget-bar-track">
+            <div class="budget-bar-fill" style="width:81%"></div>
+          </div>
+          <div class="budget-label">6,482 / 8,000 tokens cibles (81%) 🟡 acceptable</div>
+        </div>
+        <div style="margin-top:1.2rem">
+          <div class="metric-row"><span>/survey</span><span class="metric-val">4,927 tok 🟢</span></div>
+          <div class="metric-row"><span>/stabilize</span><span class="metric-val">4,927 tok 🟢</span></div>
+          <div class="metric-row"><span>/derive</span><span class="metric-val">3,069 tok 🟢</span></div>
+          <div class="metric-row"><span>/draft</span><span class="metric-val">2,543 tok 🟢</span></div>
+          <div class="metric-row"><span>/extend</span><span class="metric-val">2,786 tok 🟢</span></div>
+          <div class="metric-row"><span>/map, /audit</span><span class="metric-val">1,703 tok 🟢</span></div>
+          <div class="metric-row"><span>/compact, /doctor</span><span class="metric-val">1,464 tok 🟢</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARCHITECTURE -->
+  <section>
+    <h2>Architecture cible</h2>
+    <pre>src/app.py        → create_app() seulement
+src/config.py     · src/db.py
+src/models/       user · project · task · comment    (SQLAlchemy)
+src/schemas/      user · project · task              (Pydantic)
+src/routes/       auth · projects · tasks · admin    (Blueprints)
+src/services/     auth · task · project              (logique métier)
+src/utils/        logger · security
+tests/            conftest · test_auth · test_tasks · test_projects · test_admin
+
+Stack:  Flask 3.x  ·  SQLAlchemy 2  ·  Pydantic 2  ·  bcrypt
+        structlog  ·  pytest + pytest-cov  ·  mypy --strict  ·  ruff</pre>
+  </section>
+
+  <!-- WORKFLOW -->
+  <section>
+    <h2>Workflow Claude Code REPL</h2>
+    <pre>  [1] /survey     → inventaire brut + cataloguer smells dans state.db
+  [2] /map        → carte dépendances + zones rouge/orange/vert
+  [3] /audit      → scoring OWASP + qualité + maintenabilité
+  [4] /draft      → plan d'intervention + contrats d'interface
+  [5] /stabilize  → tests pytest qui figent le comportement legacy
+  [6] /derive     → refacto module par module (gate: pytest + mypy + coverage ≥ 80%)
+  [7] /extend     → nouvelles features post-refacto
+
+  Transversales :
+    /compact  → compression session (snapshot YAML + SQL dump + history.md)
+    /doctor   → diagnostic blockers</pre>
+  </section>
+
+  <footer>
+    <p>Généré le 2026-06-20 &nbsp;·&nbsp; Projet éducatif — refactoring legacy Flask avec Claude Code</p>
+  </footer>
+
+</div>
+</body>
+</html>
