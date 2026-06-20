@@ -3,7 +3,11 @@
 > A Claude Code orchestration system for refactoring a legacy Flask monolith.  
 > Not a vibe-coding experiment — a disciplined, state-driven workflow.
 
-[![GitHub Pages](https://img.shields.io/badge/docs-GitHub%20Pages-orange)](https://YOUR_USERNAME.github.io/Jacky-Chaning-The-Legacy-)
+[![GitHub Pages](https://img.shields.io/badge/docs-GitHub%20Pages-orange)](https://fchehidi.github.io/Jacky-Chaning-The-Legacy-/)
+[![Claude Code](https://img.shields.io/badge/Claude%20Code-Anthropic-D97757?logo=anthropic&logoColor=white)](https://docs.anthropic.com/en/docs/claude-code)
+[![Python](https://img.shields.io/badge/Python-3.11-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![Flask](https://img.shields.io/badge/Flask-3.x-000000?logo=flask&logoColor=white)](https://flask.palletsprojects.com/)
+[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
 ---
 
