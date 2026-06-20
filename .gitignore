@@ -1,0 +1,86 @@
+# .gitignore — Project Jacky
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+parts/
+var/
+sdist/
+develop-eggs/
+.installed.cfg
+lib/
+lib64/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# pytest / coverage
+.pytest_cache/
+.coverage
+coverage.json
+htmlcov/
+coverage.xml
+
+# mypy
+.mypy_cache/
+
+# ruff
+.ruff_cache/
+
+# Database files (runtime — excluded, use state.sql instead)
+*.db
+*.sqlite
+*.sqlite3
+
+# State SQL dump — this IS versioned (Option B strategy)
+# session/state.sql → committed to git
+# session/state.db  → excluded (regenerated via: make state-restore)
+
+# Export files (runtime)
+export_*.json
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# IDE
+# .vscode/settings.json → versionné (contient PATH GnuWin32 pour make)
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Claude Code (ne pas versionner les logs de session)
+logs/sessions/*.md
+!logs/sessions/README.md
+
+# Conserver les audits et refactor logs (mémoire du projet)
+# logs/audit/ → versionné
+# logs/refactor/ → versionné
+
+# Vidéos (lourdes, privées)
+docs/*.mp4
+
+# Données mock (artefacts de setup)
+data/
+
+# Config locale Claude Code
+.claude/settings.local.json
+
+# Snapshots manuels de session (le yaml est la source de vérité)
+session/context.md
