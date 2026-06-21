@@ -261,8 +261,8 @@
     <div class="card">
       <h3>make status — Phases</h3>
       <div class="phase-list">
-        <div class="phase"><span class="phase-dot not_started"></span>survey</div>
-        <div class="phase"><span class="phase-dot not_started"></span>map</div>
+        <div class="phase"><span class="phase-dot completed"></span>survey</div>
+        <div class="phase"><span class="phase-dot completed"></span>map</div>
         <div class="phase"><span class="phase-dot not_started"></span>audit</div>
         <div class="phase"><span class="phase-dot not_started"></span>draft</div>
         <div class="phase"><span class="phase-dot not_started"></span>stabilize</div>
@@ -270,7 +270,7 @@
         <div class="phase"><span class="phase-dot not_started"></span>extend</div>
       </div>
       <div style="margin-top:1rem; font-size:0.8rem; color:var(--muted)">
-        Phase: none &nbsp;|&nbsp; Smells open/fixed: 5/0 &nbsp;|&nbsp; Decisions: 0
+        Phase: map ✅ &nbsp;|&nbsp; Smells open/fixed: 22/0 &nbsp;|&nbsp; Decisions: 0
       </div>
     </div>
 
@@ -307,11 +307,11 @@
     <pre>╔══════════════════════════════════════════════════════════════════╗
 ║  PROJECT JACKY — Metrics Dashboard (inter-session feedback)     ║
 ╚══════════════════════════════════════════════════════════════════╝
-  Generated: 2026-06-20
+  Generated: 2026-06-21
 
-  Phases: ⬜survey  ⬜map  ⬜audit  ⬜draft  ⬜stabilize  ⬜derive  ⬜extend
+  Phases: ✅survey  ✅map  ⬜audit  ⬜draft  ⬜stabilize  ⬜derive  ⬜extend
 
-  Smells    [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░] 0%   0/5 fixed
+  Smells    [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░] 0%   0/22 found · 0 fixed
 
   METRIC                 TREND (oldest → latest)     LAST   HEALTH
   ────────────────────────────────────────────────────────────────
@@ -320,7 +320,7 @@
   mypy errors            ────────────────────          —   ⬜ no data
   Modules migrated       ────────────────────          —   ⬜ no data
 
-  Decisions total: 0  |  Sessions: 1  |  Velocity: 0.0/session
+  Decisions total: 0  |  Sessions: 2  |  Velocity: 0.0/session
 
   ⬜ No metric data yet — run /stabilize and /derive to populate</pre>
   </section>

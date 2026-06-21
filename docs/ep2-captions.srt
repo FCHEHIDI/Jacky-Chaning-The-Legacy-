@@ -1,0 +1,39 @@
+1
+00:00:02,000 --> 00:00:07,000
+22 smells catalogued.
+
+2
+00:00:08,000 --> 00:00:14,000
+SQL injection. No auth. MD5. Global connection.
+Where do we start?
+
+3
+00:00:17,000 --> 00:00:24,000
+Claude reads the full dependency map.
+
+4
+00:00:28,000 --> 00:00:36,000
+Risk zones: red, orange, green.
+
+5
+00:00:40,000 --> 00:00:50,000
+Refactor order decided.
+Auth first — highest risk.
+
+6
+00:00:54,000 --> 00:01:03,000
+Everything logged to logs/audit/map.md
+
+7
+00:01:07,000 --> 00:01:13,000
+Gate validated. Red zones locked.
+
+8
+00:01:16,000 --> 00:01:24,000
+State committed to git.
+No black box.
+
+9
+00:01:26,000 --> 00:01:34,000
+Phase 2 complete.
+Next: OWASP scoring.
