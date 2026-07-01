@@ -130,10 +130,11 @@ tests/            conftest · test_auth · test_tasks · test_projects · test_a
 ## Current state
 
 ```
-Phase:   survey → not started
-Smells:  5 open / 0 fixed
-Tests:   0 (populated by /stabilize)
+Phase:    draft → completed  (4/7)
+Smells:   22 open / 0 fixed
+Tests:    0 (populated by /stabilize)
 Coverage: — (no data yet)
+Score:    2.0/10 (OWASP audit — 5 active violations)
 ```
 
 > State is tracked in `session/state.sql` — regenerate DB with `make state-restore`

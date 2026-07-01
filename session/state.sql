@@ -1,5 +1,5 @@
 -- state.sql — Project Jacky state dump
--- Generated: 2026-06-20T16:01:26
+-- Generated: 2026-07-01T12:08:33
 -- Source of truth: state.db  (excluded from git via .gitignore)
 -- Restore with: python scripts/state.py import sql
 -- Or:           make state-restore
@@ -9,9 +9,9 @@ PRAGMA foreign_keys=OFF;
 -- phases (7 rows)
 DELETE FROM phases;
 INSERT INTO phases (id, name, status, started_at, completed_at) VALUES ('1', 'survey', 'completed', '2026-06-20T15:45:31.206029', '2026-06-20T15:47:47.249020');
-INSERT INTO phases (id, name, status, started_at, completed_at) VALUES ('2', 'map', 'not_started', NULL, NULL);
-INSERT INTO phases (id, name, status, started_at, completed_at) VALUES ('3', 'audit', 'not_started', NULL, NULL);
-INSERT INTO phases (id, name, status, started_at, completed_at) VALUES ('4', 'draft', 'not_started', NULL, NULL);
+INSERT INTO phases (id, name, status, started_at, completed_at) VALUES ('2', 'map', 'completed', NULL, '2026-06-21T11:50:43.929449');
+INSERT INTO phases (id, name, status, started_at, completed_at) VALUES ('3', 'audit', 'completed', NULL, '2026-06-26T11:51:53.750868');
+INSERT INTO phases (id, name, status, started_at, completed_at) VALUES ('4', 'draft', 'completed', NULL, '2026-07-01T12:08:32.795019');
 INSERT INTO phases (id, name, status, started_at, completed_at) VALUES ('5', 'stabilize', 'not_started', NULL, NULL);
 INSERT INTO phases (id, name, status, started_at, completed_at) VALUES ('6', 'derive', 'not_started', NULL, NULL);
 INSERT INTO phases (id, name, status, started_at, completed_at) VALUES ('7', 'extend', 'not_started', NULL, NULL);
@@ -44,10 +44,14 @@ INSERT INTO smells (id, name, location, severity, status, fixed_in, fixed_at, cr
 INSERT INTO smells (id, name, location, severity, status, fixed_in, fixed_at, created_at) VALUES ('21', 'reset_db wipes all data with no confirmation', '/admin/reset l.337-344', 'critical', 'open', NULL, NULL, '2026-06-20 15:45:58');
 INSERT INTO smells (id, name, location, severity, status, fixed_in, fixed_at, created_at) VALUES ('22', 'No soft delete / no audit trail', 'delete_project() l.143, delete_task() l.251', 'medium', 'open', NULL, NULL, '2026-06-20 15:45:58');
 
--- metrics (0 rows)
+-- metrics (4 rows)
 DELETE FROM metrics;
+INSERT INTO metrics (id, phase, key, value, unit, recorded_at) VALUES ('1', 'unknown', 'snapshot_smells_open', '22.0', NULL, '2026-06-21T11:49:29.218613');
+INSERT INTO metrics (id, phase, key, value, unit, recorded_at) VALUES ('2', 'unknown', 'snapshot_smells_fixed', '0.0', NULL, '2026-06-21T11:49:29.218613');
+INSERT INTO metrics (id, phase, key, value, unit, recorded_at) VALUES ('3', 'unknown', 'snapshot_smells_open', '22.0', NULL, '2026-06-21T11:49:38.158138');
+INSERT INTO metrics (id, phase, key, value, unit, recorded_at) VALUES ('4', 'unknown', 'snapshot_smells_fixed', '0.0', NULL, '2026-06-21T11:49:38.158138');
 
--- session_log (34 rows)
+-- session_log (39 rows)
 DELETE FROM session_log;
 INSERT INTO session_log (id, level, message, phase, created_at) VALUES ('1', 'RISK', 'Smell catalogued: SQL injection @ get_tasks query builder (critical)', 'survey', '2026-06-20 11:43:10');
 INSERT INTO session_log (id, level, message, phase, created_at) VALUES ('2', 'RISK', 'Smell catalogued: MD5 password @ register route (critical)', 'survey', '2026-06-20 11:43:11');
@@ -83,6 +87,11 @@ INSERT INTO session_log (id, level, message, phase, created_at) VALUES ('31', 'R
 INSERT INTO session_log (id, level, message, phase, created_at) VALUES ('32', 'RISK', 'export_data() ecrit un fichier JSON non protege sur le serveur, accessible par chemin connu', 'survey', '2026-06-20 15:46:16');
 INSERT INTO session_log (id, level, message, phase, created_at) VALUES ('33', 'RISK', 'Suppression en cascade (delete_project supprime tasks) sans transaction atomique', 'survey', '2026-06-20 15:46:16');
 INSERT INTO session_log (id, level, message, phase, created_at) VALUES ('34', 'INFO', 'Phase ''survey'' → completed', 'survey', '2026-06-20 15:47:47');
+INSERT INTO session_log (id, level, message, phase, created_at) VALUES ('35', 'INFO', 'Metrics snapshot recorded (0 series + smells)', 'unknown', '2026-06-21 11:49:29');
+INSERT INTO session_log (id, level, message, phase, created_at) VALUES ('36', 'INFO', 'Metrics snapshot recorded (0 series + smells)', 'unknown', '2026-06-21 11:49:38');
+INSERT INTO session_log (id, level, message, phase, created_at) VALUES ('37', 'INFO', 'Phase ''map'' → completed', 'map', '2026-06-21 11:50:43');
+INSERT INTO session_log (id, level, message, phase, created_at) VALUES ('38', 'INFO', 'Phase ''audit'' → completed', 'audit', '2026-06-26 11:51:53');
+INSERT INTO session_log (id, level, message, phase, created_at) VALUES ('39', 'INFO', 'Phase ''draft'' → completed', 'draft', '2026-07-01 12:08:32');
 
 -- files_touched (0 rows)
 DELETE FROM files_touched;
